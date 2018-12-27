@@ -22,15 +22,20 @@ def start_game():
     user_play = True
     guess = None
     while user_play:
+        # setting the condition to true as long as the user wants to play
         random_number = round(random.randint(1, 11))
+        # random number that is rounded
         guesses = 0
+        # setting the increment variable
 
         while guess != random_number:
+            # condition as long as guess does not equal random number
             try:
                 user_input = input("Enter a number between 1 and 10: ")
                 guess = int(user_input)
                 if guess not in [num for num in range(1, 11)]:
                     raise ValueError("Enter a number only from 1 to 10")
+                    # if guess is not between 1 and 10 raise a value error with a custom message
                 else:
                     if guess < random_number:
                         guesses += 1
@@ -42,6 +47,7 @@ def start_game():
                         guesses += 1
                         print("{} is the random number.  You got it in {} tries.  Great job!".format(guess, guesses))
                         user_play_input = input("Would you like to play again? Enter [n|N or No|no] or [y|Y or Yes|yes]: ")
+                        # asks the user if they want to play again
                         if user_play_input == "Y" or user_play_input == "y" or user_play_input == "Yes" or user_play_input == "yes":
                             continue
                         elif user_play_input == "N" or user_play_input == "n" or user_play_input == "No" or user_play_input == "no":
@@ -52,7 +58,9 @@ def start_game():
                             break
             except:
                 print("{} is not a valid guess, please enter a number from 1 to 10". format(user_input))
+                # this comes up when the value error occurs
                 continue 
 
 if __name__ == '__main__':
     start_game()
+    # starts the game
